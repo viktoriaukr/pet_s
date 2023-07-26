@@ -26,7 +26,7 @@ def home_page():
 def add_new_pet():
     """Adds new pet."""
     form = AddPet()
-    if form.validate():
+    if form.validate_on_submit():
         name = form.name.data
         species = form.species.data
         photo_url = form.photo_url.data
@@ -48,7 +48,7 @@ def display_edit_pet_info(id):
     pet = Pet.query.get_or_404(id)
     form = EditPet(obj=pet)
 
-    if form.validate():
+    if form.validate_on_submit():
         pet.photo_url = form.photo_url.data
         pet.notes = form.notes.data
         pet.available = form.available.data
