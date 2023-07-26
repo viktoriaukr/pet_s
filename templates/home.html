@@ -5,8 +5,11 @@
   <div>
     {% if pet.photo_url %}
     <img src="{{ pet.photo_url }}" alt="Pet Photo" />
-    {% endif %}
+    {% endif %} {% if pet.available %}
     <p><a href="/{{ pet.id }}">{{ pet.name }}</a> is available!</p>
+    {% endif %} {% if not pet.available %}
+    <p><a href="/{{ pet.id }}">{{ pet.name }}</a> is not available!</p>
+    {% endif %}
   </div>
   {% endfor %}
   <a href="/add" class="btn btn-success btn-lg">Add a pet</a>
